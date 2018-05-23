@@ -1,0 +1,173 @@
+<!--index.wxml-->
+<view class="container">
+  <!-- <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view> -->
+  <view class="top-bar">
+     <text class="top-title">{{mainInfo.data.house_info.title}}</text>
+     <text class="state">在售</text>
+  </view>
+  <view>
+     <text class="othername">别名：</text>
+     <text class="othername-child" style="color:#6B7072;font-size:26rpx">{{mainInfo.data.house_info.seTitle}}</text>
+  </view>
+  <view class="houseimg-bg">
+       <image class="house-img" src="./images/lll.png"></image> 
+         <image class="houseimg-bg1" src="./images/ddd.png"></image>  
+         <image class="houseimg-bg2" src="./images/mmm.png"></image>  
+  </view>
+  <view class="houseinfo-lists">
+      <view class="lists-child">
+          <text class="lists-title">售价</text>
+          <text class="lists-info">{{mainInfo.data.house_info.price}}</text>          
+      </view>
+      <view class="lists-child house-type">
+          <text class="lists-title">房型</text>
+          <text class="lists-info">{{mainInfo.data.house_info.type}}</text>
+      </view>
+      <view class="lists-child house-area">
+          <text class="lists-title">建筑面积</text>
+          <text class="lists-info">{{mainInfo.data.house_info.area}}</text>
+      </view>      
+  </view>
+  <view class="sell-time">
+      <text class="sell-title">开盘时间:</text>
+      <text class="sell-info">{{mainInfo.data.house_info.open_time}}</text>
+  </view>
+  <view class="sell-adress">
+       <text class="sell-title">地址：</text>
+       <text class="sell-info">{{mainInfo.data.house_info.address}}</text>
+  </view>
+  <view class="youhui">
+     <view class="youhui-left-img">
+        <image src="./images/ret.png"></image>
+     </view>
+     <text class="dazhe">全款9.8折，贷款9.9折</text>
+     <text class="get">领优惠</text>
+  </view>
+  <view class="more-houseinfo">
+     <text>更多房源信息</text>
+  </view>
+  <view class="banner"></view>
+  <view class="houseinfo-bar">
+      <text bindtap="getHouseLists" id="{{item.id}}" wx:for="{{mainInfo.data.typs_conditions}}" wx:key="">{{item.name}}</text>
+  </view>
+  <view class="houseinfo-box" wx:for="{{houseInfoLists.data.house_lists}}" wx:key="">
+      <image class="houseinfo-img" src="{{item.image}}"></image>
+      <view class="houseinfo-child">
+          <view>
+             <text class="houseinfo-area">{{item.title}}</text>
+             <text class="for-sale">在售</text>
+          </view>
+          <view class="every-money">建面191m/南北面向</view>
+          <view class="houseinfo-type">
+              <text wx:for="{{item.tabs}}" wx:key="" style="color:#9C9FA1;font-size:22rpx">{{item}}</text>
+          </view>
+          <view class="money">{{item.price}}万/套</view>
+      </view>
+  </view>
+  <view class="banner1"></view>  
+  <view class="user-evalute">
+      <text class="evalute-title">用户评论</text>
+      <text class="more-evalute">更多点评></text>
+      <view class="good-logo">
+         <image src="./images/ooo.png"></image> 
+         <image class="good-logo-img" src="./images/ooo.png"></image>
+         <image class="good-logo-img" src="./images/ooo.png"></image>
+         <image class="good-logo-img" src="./images/ooo.png"></image>
+         <image class="good-logo-img" src="./images/ppp.png"></image>
+         <text class="fra">综合评分</text>
+         <text class="fra-num">4.0</text>
+      </view>
+      <view class="evalute-info">
+          <view class="peitao" wx:for="{{mainInfo.data.comments.tab_score}}" wx:key="">
+              <text>{{item.name}}</text>
+              <text>{{item.score}}</text>
+              <text>分</text>
+          </view>
+      </view>
+  </view>
+  <view class="banner3"></view>
+  <view class="situation">
+      <text>全部点评（0）</text>
+      <text>有图(0)</text>
+      <text>有图(0)</text>
+      <text>有图(0)</text>
+      <text>有图(0)</text>      
+  </view>
+  <view class="user-comment">
+      <view wx:for="{{mainInfo.data.comments.comment}}" wx:key="" class="user-info">
+        <view class="userinfo-box">
+            <image class="user-img" src="{{item.user_image}}"></image>
+            <text class="user-name">{{item.user_name}}</text>
+            <view class="good-comment">
+              <image src="./images/ooo.png"></image>
+              <image src="./images/ooo.png"></image>
+              <image src="./images/ooo.png"></image>
+              <image src="./images/ppp.png"></image>
+            </view>
+            <view class="all-comment">
+              <view wx:for="{{item.user_score}}" wx:key="" class="all-comment-div">
+                <text>{{item.name}}</text>
+                <text class="all-comment-score">{{item.score}}</text>
+              </view>
+            </view>
+        </view>
+        <view class="com-content">{{item.user_comment}}</view>
+        <view class="com-time">{{item.create_time}}</view>
+        <view class="banner"></view>
+      </view>
+  </view>
+  <view class="ask-people-div">
+    <view class="ask-title">
+        <text class="ask-people">买房问大家</text>
+        <text class="ask-more">查看全部回答></text>
+    </view>
+    <view class="ask-box" wx:for="{{mainInfo.data.questions}}" wx:key="">
+      <view class="ask-logo">
+          <image src="./images/ask.png"></image>
+          <text>{{item.question}}</text>
+      </view>
+      <view class="guanzhu">
+        <text>{{item.attention_num}}</text>
+        <text class="guanzhu-child">关注</text>
+        <text>{{item.answer_num}}</text>
+        <text>回答</text>
+      </view>
+      <view class="bg"></view>
+    </view>
+  </view>
+  <view class="banner"></view>
+  <view class="tuijian">
+     <view class="tuijian-box">
+        <text class="tuijian-title">周边推荐</text>
+        <text class="more-tuijian">更多推荐></text>
+     </view>
+  </view>
+  <view class="tuijianhouse">
+        <view wx:for="{{mainInfo.data.hotlists}}" wx:key="" class="tuijianhouse-box">
+            <image src="{{item.image}}"></image>
+            <view class="tuijianhouse-title">{{item.title}}</view>
+            <view class="tuijianhouse-address">{{item.address}}</view>
+            <view class="tuijianhouse-money">
+                <text>均价</text>
+                <text>{{item.uprice}}</text>
+                <text>元/平</text>
+            </view>
+        </view>
+  </view>
+  <view class="bottom-box">
+      <text>预售许可证：京房售证字（2017）7号</text>
+  </view>
+  <view class="callme">
+      <text class="call-youhui">询优惠</text>
+      <text class="call-shoulou">联系售楼处</text>
+  </view>
+</view>

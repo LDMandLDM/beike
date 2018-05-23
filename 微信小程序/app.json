@@ -1,0 +1,12 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "贝壳新房",
+    "navigationBarTextStyle":"black",
+    "backgroundTextStyle": "light"
+  }
+}
